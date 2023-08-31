@@ -4,6 +4,7 @@ import com.application.xiaomi.XiaomiApplication;
 import com.application.xiaomi.dao.UsersRepo;
 import com.application.xiaomi.entities.Users;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@RestController
+@Controller
 public class TestClass {
 
 //    @RequestMapping(value = "/home", method=RequestMethod.POST)
@@ -52,8 +53,8 @@ public class TestClass {
         return obj;
     }
 
-//    @GetMapping("")
-//    public String index() {
-//        return "index";
-//    }
+    @GetMapping("")
+    public String index() {
+        return "index";
+    }
 }
