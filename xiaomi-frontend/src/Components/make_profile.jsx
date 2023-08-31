@@ -15,25 +15,25 @@ const Form = () => {
         console.log(student);
         
         try {
-            const response = await fetch("http://localhost:8080/service/add", {
+            const response = await fetch("http://localhost:8080/users/add", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(student)
             });
-            const data2 = await response.json();
-            console.log(data2)
+            // const data2 = await response.json();
+            console.log(response)
             
             if (response.ok) {
+                console.log("success")
                 const data = await response.json();
-                navigate(`/welcome?userId=${data.userId}`);
+                navigate(`/welcome?userId=${data.user_id}`);
             } else {
-                console.error("Failed to add new student");
+                console.error("Failed to add new User");
             }
         } catch (error) {
-            console.error("adding new student:", error);
+            console.error("adding new User:", error);
         }
     };
-
 
 
     return (
@@ -49,13 +49,13 @@ const Form = () => {
                 </div>
                 <div className="form-group">
                     <label htmlFor="user_type">User Type</label>
-                    <label htmlFor="usertype">Usertype</label>
-                    <input type="text" className="form-control" id="user_type" name="user_type" placeholder="Enter username" value={user_type} onChange={(e) => setUserType(e.target.value)} />
-                    {/* <select className="form-control" id="user_type" name="user_type" value={user_type} onChange={(e) => setUserType(e.target.value)}>
+                    {/* <label htmlFor="usertype">Usertype</label>
+                    <input type="text" className="form-control" id="user_type" name="user_type" placeholder="Enter username" value={user_type} onChange={(e) => setUserType(e.target.value)} /> */}
+                    <select className="form-control" id="user_type" name="user_type" value={user_type} onChange={(e) => setUserType(e.target.value)}>
                         <option value="">Select User Type</option>
                         <option value="warehouse">Warehouse</option>
                         <option value="service">Service Centre</option>
-                    </select> */}
+                    </select>
                 </div>
                 <div className="form-group">
                     <button type="submit" className="btn btn-primary">Submit</button>

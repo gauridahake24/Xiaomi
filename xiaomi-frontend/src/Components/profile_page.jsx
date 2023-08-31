@@ -1,32 +1,24 @@
 // Profile.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
+
 
 const Profile = () => {
     const { id } = useParams();
     const [userProfile, setUserProfile] = useState(null);
+    const getdata = async() => {
+        
+        const userid = localStorage.getItem("user_id")
+        const response = await fetch ("http://localhost:8080/users/printId",{  
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({user_id: userid})})
+        const data = await response.json()
 
-    useEffect(() => {
-        if (id) {
-            console.log('Fetching user profile...');
-            axios.get(`http://localhost:8080/service/add`, {
-                params: {
-                    username: "gauri",
-                    user_type: "warehouse" // Replace with the appropriate value
-                }
-            })
-            .then(response => {
-                // Handle successful response
-                setUserProfile(response.data);
-            })
-            .catch(error => {
-                // Handle error
-                console.log("Error:", error);
-            });
-        }
-    }, [id]);
-
+        setUserProfile(data)
+        console.log(data)
+    }
+    useEffect(()=> {getdata()}, [])
     if (!userProfile) {
         return <div>Loading...</div>;
     }
@@ -34,8 +26,9 @@ const Profile = () => {
     return (
         <div>
             <h1>User Profile</h1>
-            <p>User Id: {userProfile.ID}</p>
-            <p>Username: {userProfile.Name}</p>
+            <p>User Id: {userProfile?.user_id}</p>
+            <p>Username: {userProfile?.username}</p>
+            <p>User Type: {userProfile?.user_type}</p>
     
         </div>
     );

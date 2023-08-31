@@ -1,11 +1,13 @@
 // src/components/Welcome.js
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 const Welcome = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const userId = searchParams.get("userId");
+    const navigate = useNavigate()
 
     return (
         <div>
@@ -14,7 +16,7 @@ const Welcome = () => {
             <h1> please Login in here</h1>
 
             <div className="form-group-1" style={{ display: 'flex', justifyContent: 'center' }}>
-    <button type="submit" className="btn btn-primary">Log in</button>
+    <button type="submit" className="btn btn-primary" onClick={()=> {navigate("/login")}}>Log in</button>
 </div>
     
         </div>

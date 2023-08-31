@@ -7,8 +7,26 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
-    const handleLogin = (event) => {
+    const handleLogin = async(event) => {
         event.preventDefault();
+        const response = await fetch ("http://localhost:8080/users/printId",{  
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({user_id: username})})
+        const data = await response.json()
+        console.log(data)
+
+        if (response.status === 200) {
+            localStorage.setItem("user_id", data.user_id)
+            if (data.user_type === "warehouse"){
+                navigate("/warehouse")
+            }
+            else{
+                navigate("/sc_requirements")
+            }
+        }
+
+
 
         // For demonstration purposes, assuming hardcoded valid user data
         const validUsers = [
@@ -33,7 +51,7 @@ const LoginPage = () => {
             <h2>Login</h2>
             <form onSubmit={handleLogin} className="login-form">
                 <div className="form-group">
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username">Userid</label>
                     <input
                         type="text"
                         className="form-control"
