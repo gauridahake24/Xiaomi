@@ -22,8 +22,8 @@ public class UsersController {
     @PostMapping("/add")
     public Users add(@RequestBody Users obj) {
 
-        ui.saveObj(obj);
-        return obj;
+        Users ans = ui.saveObj(obj);
+        return ans;
     }
 
     @GetMapping("/print")
