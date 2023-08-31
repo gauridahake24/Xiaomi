@@ -8,15 +8,9 @@ const CreateUpdateRepairOrder = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // Simulating form submission with mock data
-        const mockRepairOrder = {
-            customerName,
-            deviceModel,
-            issueDescription,
-            status: 'Pending', // Default status
-        };
+        
 
-        console.log('Submitted Repair Order:', mockRepairOrder);
+        console.log('Submitted Repair Order: ');
     };
 
     return (

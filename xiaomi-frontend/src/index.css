@@ -8,8 +8,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 /* 
 make_profile */
@@ -100,4 +99,7 @@ h1 {
 }
 .create_repair h1{
   color: black;
+}
+.form-group-1{
+  justify-items: center;
 }

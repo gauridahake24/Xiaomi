@@ -1,41 +1,51 @@
+// src/components/Form.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-
-const Form = ({ onSubmit }) => {
+const Form = () => {
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
-    const [password, setpassword] = useState('');
+    const [password, setPassword] = useState('');
     const [user_type, setUserType] = useState('');
-    
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // const [username, setUsername] = useState('');
-        // const [password, setpassword] = useState('');
-        // const [userType, setUserType] = useState('');
-       
-        const student = {username, user_type, password}
-        console.log(student)
-        fetch("http://localhost:8080/service/add",{
-            method:"POST",
-            headers:{"Content-Type": "application/json"},
-            body:JSON.stringify(student)
-
-        }).then(()=>{
-            console.log("new student added")
-        } )
-
+        
+        const student = { username, user_type, password };
+        console.log(student);
+        
+        try {
+            const response = await fetch("http://localhost:8080/service/add", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(student)
+            });
+            const data2 = await response.json();
+            console.log(data2)
+            
+            if (response.ok) {
+                const data = await response.json();
+                navigate(`/welcome?userId=${data.userId}`);
+            } else {
+                console.error("Failed to add new student");
+            }
+        } catch (error) {
+            console.error("adding new student:", error);
+        }
     };
- 
+
+
 
     return (
         <div className="form-container">
             <h2>Create Profile</h2>
+
             <form onSubmit={handleSubmit} className="form">
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input type="text" className="form-control" id="username" name="username" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
                     <label htmlFor="password">Password</label>
-                    <input type="text" className="form-control" id="password" name="password" placeholder="Password" value={password} onChange={(e) => setpassword(e.target.value)} />
+                    <input type="text" className="form-control" id="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="user_type">User Type</label>
@@ -48,7 +58,7 @@ const Form = ({ onSubmit }) => {
                     </select> */}
                 </div>
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary"onClick={onSubmit}>Submit</button>
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
