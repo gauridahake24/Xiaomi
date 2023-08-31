@@ -18,13 +18,12 @@ public class Service_Cen {
     private String warehouse_location;
     private String priority;
 
-    private Service_Cen(int part_id, String part_name, int Available_quantity, int Required_quantity, String warehouse_location, String priority) {
-        super();
+    public Service_Cen(int part_id, String part_name, int Available_quantity, int Required_quantity, String warehouse_location, String priority) {
         this.part_id = part_id;
         this.part_name = part_name;
         this.Available_quantity = Available_quantity;
         this.Required_quantity = Required_quantity;
-        this. warehouse_location = warehouse_location;
+        this.warehouse_location = warehouse_location;
         this.priority = priority;
     }
 
@@ -75,5 +74,4 @@ public class Service_Cen {
     public void setPriority(String priority) {
         this.priority = priority;
     }
-
 }
