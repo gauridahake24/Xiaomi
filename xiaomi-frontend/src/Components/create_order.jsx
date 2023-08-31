@@ -10,12 +10,14 @@ const RepairOrder = () => {
         event.preventDefault();
         
         const newOrder = {Available_quantity,part_name,Required_quantity, warehouse_location }
-    
+        const formData = new FormData();
+        formData.append("Available_quantity", Required_quantity)
+        formData.append("part_name", "screen")
         console.log(newOrder)
         fetch("http://localhost:8080/service/add",{
             method:"POST",
-            headers:{"Content-Type": "application/json"},
-            body:JSON.stringify(newOrder)
+            // headers:{"Content-Type": "application/json"},
+            body:formData
 
         }).then(()=>{
             console.log("new order added")
@@ -25,7 +27,7 @@ const RepairOrder = () => {
     useEffect(() => {
         const fetchAvailableQuantity = async () => {
             try {
-                const response = await fetch('backend_api_url_here');
+                const response = await fetch('localhost:8080/service/add');
                 const data = await response.json();
                 setAvailableQuantity(data.available_quantity);
             } catch (error) {
