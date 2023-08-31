@@ -18,13 +18,27 @@ public class Service_Cen {
     private String warehouse_location;
     private String priority;
 
-    public Service_Cen(int part_id, String part_name, int Available_quantity, int Required_quantity, String warehouse_location, String priority) {
+    public Service_Cen(int part_id, String part_name, int available_quantity, int required_quantity, String warehouse_location, String priority) {
+        super();
         this.part_id = part_id;
         this.part_name = part_name;
-        this.Available_quantity = Available_quantity;
-        this.Required_quantity = Required_quantity;
+        Available_quantity = 40;
+        Required_quantity = 200;
         this.warehouse_location = warehouse_location;
         this.priority = priority;
+    }
+
+    public Service_Cen() {
+        super();
+    }
+
+    public Service_Cen(Object part_name, Object available_quantity, Object required_quantity, Object warehouse_location, Object priority) {
+        this.part_name = part_name.toString();
+        this.Available_quantity = Integer.parseInt(available_quantity.toString());
+        this.Required_quantity = Integer.parseInt(required_quantity.toString());
+        this.warehouse_location= warehouse_location.toString();
+        this.priority = priority.toString();
+
     }
 
     public int getPart_id() {
@@ -47,17 +61,17 @@ public class Service_Cen {
         return Available_quantity;
     }
 
-    public void setAvailable_quantity(int available_quantity) {
-        Available_quantity = available_quantity;
-    }
+//    public void setAvailable_quantity(int available_quantity) {
+//        Available_quantity = available_quantity;
+//    }
 
     public int getRequired_quantity() {
         return Required_quantity;
     }
 
-    public void setRequired_quantity(int required_quantity) {
-        Required_quantity = required_quantity;
-    }
+//    public void setRequired_quantity(int required_quantity) {
+//        Required_quantity = required_quantity;
+//    }
 
     public String getWarehouse_location() {
         return warehouse_location;
