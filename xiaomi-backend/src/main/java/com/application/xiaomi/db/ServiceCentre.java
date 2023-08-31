@@ -13,7 +13,7 @@ import java.util.Optional;
 @RestController
 public class ServiceCentre {
 
-    @PostMapping("/home/{id}")
+    @GetMapping("/home/{id}")
     public Map<String, Object> home(@PathVariable("id")@RequestParam("user_type") int id) {
 
         Map<String, Object> obj = new HashMap<>();

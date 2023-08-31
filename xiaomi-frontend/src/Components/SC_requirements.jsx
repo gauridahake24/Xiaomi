@@ -32,6 +32,7 @@ const SC_req = () => {
                         <th>Part ID</th>
                         <th>Part Name</th>
                         <th>Available Quantity</th>
+                        <th>Required Quantity</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +41,7 @@ const SC_req = () => {
                             <td>{part.part_id}</td>
                             <td>{part.part_name}</td>
                             <td>{part.Available_quantity}</td>
+                            <td>{part.Required_quantity}</td>
                         </tr>
                     ))}
                 </tbody>

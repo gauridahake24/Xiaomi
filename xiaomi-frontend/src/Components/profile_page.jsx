@@ -1,14 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import axios from 'axios'; // Import Axios
 
 const Profile = () => {
     const { userId } = useParams();
     const [userProfile, setUserProfile] = useState(null);
 
     useEffect(() => {
-        // Fetch user profile data using the "userId" from the URL parameter
-        // and set it to the "userProfile" state
+        console.log('Fetching user profile...');
+        axios.get(`/home/${userId}`, {
+            params: {
+                user_type: userId
+            }
+        })
+        .then(response => {
+            console.log('User profile data:', response.data);
+            setUserProfile(response.data);
+        })
+        .catch(error => {
+            console.error('Error fetching user profile:', error);
+        });
     }, [userId]);
+    
+
+ 
 
     if (!userProfile) {
         return <div>Loading...</div>;
@@ -17,9 +32,8 @@ const Profile = () => {
     return (
         <div>
             <h1>User Profile</h1>
-            <p>Username: {userProfile.username}</p>
-            <p>User Type: {userProfile.userType}</p>
-            
+            <p>User Id: {userProfile.ID}</p>
+            <p>Username: {userProfile.Name}</p>
         </div>
     );
 };
