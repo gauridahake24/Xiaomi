@@ -11,6 +11,7 @@ import SupportCenter from './Components/support_center';
 import Profile from './Components/profile_page'; 
 import SC_req from './Components/SC_requirements';
 import Form from './Components/make_profile';
+import Submit from './Components/submit_page';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -23,8 +24,9 @@ ReactDOM.render(
                 <Route path="/dispatch-plan" element={<DispatchPlan />} />
                 <Route path="/support-center" element={<SupportCenter />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/sc_req" element={<SC_req />} />
+                <Route path="/sc_requirements" element={<SC_req />} />
                 <Route path='/make_profile' element={<Form />} />
+                <Route path='/submit' element={<Submit />} />
             </Routes>
         </Router>
     </React.StrictMode>,

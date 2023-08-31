@@ -10,8 +10,9 @@ const Profile = () => {
     useEffect(() => {
         if (id) {
             console.log('Fetching user profile...');
-            axios.get(``, {
+            axios.get(`http://localhost:8080/service/add`, {
                 params: {
+                    username: "gauri",
                     user_type: "warehouse" // Replace with the appropriate value
                 }
             })
@@ -35,6 +36,7 @@ const Profile = () => {
             <h1>User Profile</h1>
             <p>User Id: {userProfile.ID}</p>
             <p>Username: {userProfile.Name}</p>
+    
         </div>
     );
 };
