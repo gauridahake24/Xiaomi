@@ -1,29 +1,30 @@
+// Profile.js
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios'; // Import Axios
+import axios from 'axios';
 
 const Profile = () => {
-    const { userId } = useParams();
+    const { id } = useParams();
     const [userProfile, setUserProfile] = useState(null);
 
     useEffect(() => {
-        console.log('Fetching user profile...');
-        axios.get(`/home/${userId}`, {
-            params: {
-                user_type: userId
-            }
-        })
-        .then(response => {
-            console.log('User profile data:', response.data);
-            setUserProfile(response.data);
-        })
-        .catch(error => {
-            console.error('Error fetching user profile:', error);
-        });
-    }, [userId]);
-    
-
- 
+        if (id) {
+            console.log('Fetching user profile...');
+            axios.get(``, {
+                params: {
+                    user_type: "warehouse" // Replace with the appropriate value
+                }
+            })
+            .then(response => {
+                // Handle successful response
+                setUserProfile(response.data);
+            })
+            .catch(error => {
+                // Handle error
+                console.log("Error:", error);
+            });
+        }
+    }, [id]);
 
     if (!userProfile) {
         return <div>Loading...</div>;

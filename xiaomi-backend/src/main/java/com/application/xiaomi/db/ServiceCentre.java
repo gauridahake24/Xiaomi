@@ -14,6 +14,7 @@ import java.util.Optional;
 public class ServiceCentre {
 
     @GetMapping("/home/{id}")
+    @CrossOrigin
     public Map<String, Object> home(@PathVariable("id")@RequestParam("user_type") int id) {
 
         Map<String, Object> obj = new HashMap<>();

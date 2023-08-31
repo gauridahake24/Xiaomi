@@ -1,51 +1,37 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 
-const MakeProfile = () => {
+
+const Form = ({ onSubmit }) => {
     const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
     const [userType, setUserType] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        // Create an object to hold the user profile data
-        const userData = {
-            username,
-            password,
-            user_type: userType,
-        };
-
-        // Send the user profile data to the server using Axios POST request
-        axios.post('/api/users', userData) // Replace with the actual API endpoint
-            .then(response => {
-                console.log('User profile created:', response.data);
-            })
-            .catch(error => {
-                console.error('Error creating user profile:', error);
-            });
+        onSubmit({ username, userType });
     };
 
     return (
-        <div>
-            <h1>Create User Profile</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Username:</label>
-                    <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+        <div className="form-container">
+            <h2>Create Profile</h2>
+            <form onSubmit={handleSubmit} className="form">
+                <div className="form-group">
+                    <label htmlFor="username">Username</label>
+                    <input type="text" className="form-control" id="username" name="username" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
                 </div>
-                <div>
-                    <label>Password:</label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <div className="form-group">
+                    <label htmlFor="user_type">User Type</label>
+                    <select className="form-control" id="user_type" name="user_type" value={userType} onChange={(e) => setUserType(e.target.value)}>
+                        <option value="">Select User Type</option>
+                        <option value="warehouse">Warehouse</option>
+                        <option value="service">Service Centre</option>
+                    </select>
                 </div>
-                <div>
-                    <label>User Type:</label>
-                    <input type="text" value={userType} onChange={(e) => setUserType(e.target.value)} />
+                <div className="form-group">
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </div>
-                <button type="submit">Create Profile</button>
             </form>
         </div>
     );
 };
 
-export default MakeProfile;
+export default Form;
