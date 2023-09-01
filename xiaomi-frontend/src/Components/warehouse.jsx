@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const mockPartsData = [
@@ -21,31 +23,37 @@ const mockPartsData = [
 ];
 
 const Warehouse = () => {
+    const navigate= useNavigate();
+    const handleStartClick = () => {
+        navigate('/dispatch');
+      };
     const [partsData] = useState(mockPartsData); // Use mock data as initial state
 
     return (
-        <div className="sc-req-container">
-            <h1>Available Quantity in service Centre</h1>
-            <table className="parts-table">
-                <thead>
-                    <tr>
-                        <th>Part ID</th>
-                        <th>Part Name</th>
-                        <th>Warehouse Available Quantity</th>
-                      
-                    </tr>
-                </thead>
-                <tbody>
-                    {partsData.map((part) => (
-                        <tr key={part.part_id}>
-                            <td>{part.part_id}</td>
-                            <td>{part.part_name}</td>
-                            <td>{part.Available_quantity}</td>
-                        
+        <div className="warehouse-container">
+            <h1>Available Quantity in Warehouse</h1>
+            <div className="table-container">
+                <table className="parts-table">
+                    <thead>
+                        <tr>
+                            <th>Part ID</th>
+                            <th>Part Name</th>
+                            <th>Warehouse Available Quantity</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {partsData.map((part, index) => (
+                            <tr key={part.part_id} className={index % 2 === 0 ? 'even-row' : 'odd-row'}>
+                                <td>{part.part_id}</td>
+                                <td>{part.part_name}</td>
+                                <td>{part.Available_quantity}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+
+            </div>
+            <button className='partrequest' onClick={handleStartClick}>Go to Part Requests</button>
         </div>
     );
 };

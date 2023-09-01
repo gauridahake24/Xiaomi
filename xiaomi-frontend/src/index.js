@@ -16,6 +16,8 @@ import Welcome from './Components/welcome';
 import LoginPage from './Components/login';
 import Warehouse from './Components/warehouse';
 import Startpage from './Components/start_page';
+import DispatchOrder from './Components/order_dispatched';
+import All_orders from './Components/all_cust_orders';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -25,7 +27,7 @@ ReactDOM.render(
                 <Route path="/" element={<Startpage />} />
                 <Route path="/cust_home" element={<CreateUpdateRepairOrder />} />
                 <Route path="/planning" element={<Planning />} />
-                <Route path="/dispatch-plan" element={<DispatchPlan />} />
+                <Route path="/dispatch" element={<DispatchPlan />} />
                 <Route path="/support-center" element={<SupportCenter />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/sc_requirements" element={<SC_req />} />
@@ -34,6 +36,8 @@ ReactDOM.render(
                 <Route path='/welcome' element={<Welcome />} />
                 <Route path='/login' element={<LoginPage />} />
                 <Route path='/warehouse' element={<Warehouse />} />
+                <Route path='/order_dispatched' element={<DispatchOrder />} />
+                <Route path='/customer_orders' element={<All_orders />} />
             </Routes>
         </Router>
     </React.StrictMode>,

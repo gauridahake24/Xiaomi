@@ -32,6 +32,9 @@ const SC_req = () => {
   const handleStartClick = () => {
     navigate('/create-order');
   };
+  const handleStartClick1 = () => {
+    navigate('/customer_orders');
+  };
 
   return (
     <div className="sc-req-container">
@@ -63,6 +66,10 @@ const SC_req = () => {
             ))}
           </tbody>
         </table>
+        
+      </div >
+      <div className = "center-button-1">
+      <button onClick={handleStartClick1}>All Issues</button>
       </div>
     </div>
   );

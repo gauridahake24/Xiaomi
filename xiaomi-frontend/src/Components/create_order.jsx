@@ -49,7 +49,7 @@ const RepairOrder = () => {
 
     return (
         <div className="repair-order-container">
-            <h2>Create Order</h2>
+            <h1>Create Order</h1>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <form className="repair-order-form" onSubmit={handleSubmit}>
                 <div className="form-group">
