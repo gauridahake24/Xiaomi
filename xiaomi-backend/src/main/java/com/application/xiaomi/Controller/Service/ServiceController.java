@@ -2,8 +2,12 @@ package com.application.xiaomi.Controller.Service;
 
 
 import com.application.xiaomi.entities.Service_Cen;
+import com.application.xiaomi.entities.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Provider;
+import java.util.List;
 
 @RestController
 @RequestMapping("/service")
@@ -32,4 +36,23 @@ public class ServiceController {
         Service_Cen ans = si.saveObj(obj);
         return ans;
     }
+
+    @GetMapping("/print")
+    public List<Service_Cen> getall() {
+        return si.getAll();
+    }
+
+    @PostMapping("/printId")
+    public Service_Cen printId(@RequestBody Service_Cen obj) {
+        int id = obj.getPart_id();
+        List<Service_Cen> list = si.getAll();
+        Service_Cen ans = new Service_Cen();
+        for(Service_Cen i: list) {
+            if(i.getPart_id()==id)
+                ans = i;
+        }
+
+        return ans;
+    }
+
 }
