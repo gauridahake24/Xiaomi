@@ -73,12 +73,14 @@ public class ServiceController {
         else
             name = "null";
 
-        Service_Cen s = new Service_Cen();
+        Service_Cen s = null;
         for(Service_Cen i: si.getAll()) {
             if(i.getPart_name()==name)
-                s=i;
+                s=new Service_Cen(i.getPart_id(), i.getPart_name(), i.getAvailable_quantity(),
+                        i.getRequired_quantity(), i.getWarehouse_location(), i.getPriority());
         }
 
+        assert s != null;
         s.setAvailable_quantity(s.getAvailable_quantity()-1);
         si.saveObj(s);
         ci.removeObj(obj);
