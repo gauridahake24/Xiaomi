@@ -14,11 +14,15 @@ public class WareHouse {
 
     private int part_id;
     private String source_warehouse;
+    private int warehouse_quantity;
+    private int required_quantity;
 
-    public WareHouse(int dispatch_id, int part_id, String source_warehouse) {
+    public WareHouse(int dispatch_id, int part_id, String source_warehouse, int warehouse_quantity, int required_quantity) {
         this.dispatch_id = dispatch_id;
         this.part_id = part_id;
         this.source_warehouse = source_warehouse;
+        this.warehouse_quantity = warehouse_quantity;
+        this.required_quantity = required_quantity;
     }
 
     public WareHouse() {
@@ -49,4 +53,19 @@ public class WareHouse {
         this.source_warehouse = source_warehouse;
     }
 
+    public int getWarehouse_quantity() {
+        return warehouse_quantity;
+    }
+
+    public void setWarehouse_quantity(int warehouse_quantity) {
+        this.warehouse_quantity = warehouse_quantity;
+    }
+
+    public int getRequired_quantity() {
+        return required_quantity;
+    }
+
+    public void setRequired_quantity(int required_quantity) {
+        this.required_quantity = required_quantity;
+    }
 }
