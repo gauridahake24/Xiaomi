@@ -61,17 +61,17 @@ public class Service_Cen {
         return Available_quantity;
     }
 
-//    public void setAvailable_quantity(int available_quantity) {
-//        Available_quantity = available_quantity;
-//    }
+    public void setAvailable_quantity(int available_quantity) {
+        Available_quantity = available_quantity;
+    }
 
     public int getRequired_quantity() {
         return Required_quantity;
     }
 
-//    public void setRequired_quantity(int required_quantity) {
-//        Required_quantity = required_quantity;
-//    }
+    public void setRequired_quantity(int required_quantity) {
+        Required_quantity = required_quantity;
+    }
 
     public String getWarehouse_location() {
         return warehouse_location;
