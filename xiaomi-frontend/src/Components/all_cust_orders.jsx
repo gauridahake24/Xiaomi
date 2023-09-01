@@ -1,34 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-const mockPartsData = [
-  {
-    order_id: 1,
-    customer_name: 'Widget A',
-    device_model: 10,
-    issue_description: 'ABC',
-  },
-  {
-    order_id: 2,
-    customer_name: 'Widget B',
-    device_model: 60,
-    issue_description: 'DEF',
-  },
-  {
-    order_id: 3,
-    customer_name: 'Widget C',
-    device_model: 30,
-    issue_description: 'GHI',
-  },
-  // Add more mock data as needed
-];
 
 const All_orders = () => {
   const navigate = useNavigate();
   const handleStartClick = () => {
     navigate('/SC_requirements');
   };
-  const [ordersData] = useState(mockPartsData); // Use mock data as initial state
+  const [ordersData, setOrdersData] = useState([]); // Initialize state with an empty array
+
+  useEffect(() => {
+    // Fetch data from your API endpoint here
+    fetch('YOUR_API_ENDPOINT_URL_HERE')
+      .then((response) => response.json())
+      .then((data) => {
+        // Update the state with the received data
+        setOrdersData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []); // Empty dependency array to run the effect once on component mount
 
   return (
     <div className="all-orders-container">
@@ -56,9 +47,7 @@ const All_orders = () => {
         </table>
       </div>
       <div className="center-button-1">
-        <button onClick={handleStartClick}>
-          Go to Parts Data
-        </button>
+        <button onClick={handleStartClick}>Go to Parts Data</button>
       </div>
     </div>
   );

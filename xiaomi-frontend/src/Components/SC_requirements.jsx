@@ -1,40 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const mockPartsData = [
-  {
-    part_id: 1,
-    part_name: 'Widget A',
-    Available_quantity: 10,
-    Required_quantity: 5,
-    priority: 'high',
-  },
-  {
-    part_id: 2,
-    part_name: 'Widget B',
-    Available_quantity: 20,
-    Required_quantity: 15,
-    priority: 'high',
-  },
-  {
-    part_id: 3,
-    part_name: 'Widget C',
-    Available_quantity: 15,
-    Required_quantity: 10,
-    priority: 'high',
-  },
-  // Add more mock data as needed
-];
-
 const SC_req = () => {
-  const [partsData] = useState(mockPartsData); // Use mock data as initial state
+  const [partsData, setPartsData] = useState([]); // Initialize state with an empty array
   const navigate = useNavigate();
+
   const handleStartClick = () => {
     navigate('/create-order');
   };
+  
   const handleStartClick1 = () => {
     navigate('/customer_orders');
   };
+
+  useEffect(() => {
+    // Fetch data from your API endpoint when the component mounts
+    fetch('YOUR_API_ENDPOINT_URL_HERE')
+      .then((response) => response.json())
+      .then((data) => {
+        // Update the state with the received data
+        setPartsData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching data:', error);
+      });
+  }, []); // Empty dependency array to run the effect once on component mount
 
   return (
     <div className="sc-req-container">
@@ -60,16 +50,17 @@ const SC_req = () => {
                 <td>{part.Required_quantity}</td>
                 <td>{part.priority}</td>
                 <td>
-                  <button className="order-button" onClick={handleStartClick}>Order</button>
+                  <button className="order-button" onClick={handleStartClick}>
+                    Order
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        
-      </div >
-      <div className = "center-button-1">
-      <button onClick={handleStartClick1}>All Issues</button>
+      </div>
+      <div className="center-button-1">
+        <button onClick={handleStartClick1}>All Issues</button>
       </div>
     </div>
   );
