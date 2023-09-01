@@ -15,13 +15,14 @@ import Submit from './Components/submit_page';
 import Welcome from './Components/welcome';
 import LoginPage from './Components/login';
 import Warehouse from './Components/warehouse';
+import Startpage from './Components/start_page';
 
 ReactDOM.render(
     <React.StrictMode>
         <Router>
             <Routes>
-                <Route path="/" element={<App />} />
                 <Route path="/create-order" element={<RepairOrders />} />
+                <Route path="/" element={<Startpage />} />
                 <Route path="/cust_home" element={<CreateUpdateRepairOrder />} />
                 <Route path="/planning" element={<Planning />} />
                 <Route path="/dispatch-plan" element={<DispatchPlan />} />

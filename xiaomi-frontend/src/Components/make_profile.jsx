@@ -1,16 +1,22 @@
-// src/components/Form.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 
 const Form = () => {
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [user_type, setUserType] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         
+        if (!username || !password || !user_type) {
+            console.error("Please fill in all required fields.");
+            setErrorMessage('All fields are necessary! Please enter required data');
+            return ;
+        }
         const student = { username, user_type, password };
         console.log(student);
         
@@ -35,23 +41,45 @@ const Form = () => {
         }
     };
 
-
     return (
         <div className="form-container">
             <h2>Create Profile</h2>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
 
             <form onSubmit={handleSubmit} className="form">
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
-                    <input type="text" className="form-control" id="username" name="username" placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} />
+                    <input
+                        type="text"
+                        className="form-control"
+                        id="username"
+                        name="username"
+                        placeholder="Enter username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </div>
+                <div className="form-group">
                     <label htmlFor="password">Password</label>
-                    <input type="text" className="form-control" id="password" name="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    <input
+                        type="password"
+                        className="form-control"
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                 </div>
                 <div className="form-group">
                     <label htmlFor="user_type">User Type</label>
-                    {/* <label htmlFor="usertype">Usertype</label>
-                    <input type="text" className="form-control" id="user_type" name="user_type" placeholder="Enter username" value={user_type} onChange={(e) => setUserType(e.target.value)} /> */}
-                    <select className="form-control" id="user_type" name="user_type" value={user_type} onChange={(e) => setUserType(e.target.value)}>
+                    <select
+                        className="form-control"
+                        id="user_type"
+                        name="user_type"
+                        value={user_type}
+                        onChange={(e) => setUserType(e.target.value)}
+                    >
                         <option value="">Select User Type</option>
                         <option value="warehouse">Warehouse</option>
                         <option value="service">Service Centre</option>
