@@ -63,13 +63,13 @@ public class ServiceController {
     public void complete(@RequestBody Cust_order obj) {
         String name;
         if(obj.getIssue_description().toLowerCase().contains("battery"))
-            name="Battery";
+            name="battery";
         else if(obj.getIssue_description().toLowerCase().contains("screen"))
-            name="Screen";
+            name="screen";
         else if(obj.getIssue_description().toLowerCase().contains("camera") || obj.getIssue_description().toLowerCase().contains("lens"))
-            name = "Lens";
+            name = "lens";
         else if(obj.getIssue_description().toLowerCase().contains("charge"))
-            name="Charger";
+            name="charger";
         else
             name = "null";
 
