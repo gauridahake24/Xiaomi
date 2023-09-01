@@ -68,6 +68,7 @@ public class WarehouseController {
             Service_Cen s = si.getById(part_id);
             s.setAvailable_quantity(s.getAvailable_quantity() + s.getRequired_quantity());
             s.setRequired_quantity(0);
+            wi.removeObj(obj);
             list.add(s);
         }
         else {

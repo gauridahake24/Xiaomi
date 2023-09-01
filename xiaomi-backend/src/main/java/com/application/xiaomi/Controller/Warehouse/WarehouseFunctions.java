@@ -38,8 +38,10 @@ public class WarehouseFunctions implements WarehouseInterface{
         return ans;
     }
 
-    public void test(WareHouse obj) {
+    @Override
+    public void removeObj(WareHouse obj) {
         repo.delete(obj);
     }
+
 
 }

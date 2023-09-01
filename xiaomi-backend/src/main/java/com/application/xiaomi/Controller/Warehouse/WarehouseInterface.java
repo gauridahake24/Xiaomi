@@ -10,4 +10,5 @@ public interface WarehouseInterface {
     public WareHouse saveObj(WareHouse obj);
     public List<WareHouse> getAll();
     public WareHouse printId(WareHouse obj);
+    public void removeObj(WareHouse obj);
 }
