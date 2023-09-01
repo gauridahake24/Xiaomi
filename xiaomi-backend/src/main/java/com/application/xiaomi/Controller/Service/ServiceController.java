@@ -1,6 +1,8 @@
 package com.application.xiaomi.Controller.Service;
 
 
+import com.application.xiaomi.Controller.CustOrder.CustOrderInterface;
+import com.application.xiaomi.entities.Cust_order;
 import com.application.xiaomi.entities.Service_Cen;
 import com.application.xiaomi.entities.Users;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,8 @@ public class ServiceController {
 
     @Autowired
     private ServiceInterface si;
+    @Autowired
+    private CustOrderInterface ci;
 
     @PostMapping("")
     public String home() {
@@ -54,5 +58,32 @@ public class ServiceController {
 
         return ans;
     }
+
+    @PostMapping("/complete")
+    public void complete(@RequestBody Cust_order obj) {
+        String name;
+        if(obj.getIssue_description().toLowerCase().contains("battery"))
+            name="Battery";
+        else if(obj.getIssue_description().toLowerCase().contains("screen"))
+            name="Screen";
+        else if(obj.getIssue_description().toLowerCase().contains("camera") || obj.getIssue_description().toLowerCase().contains("lens"))
+            name = "Lens";
+        else if(obj.getIssue_description().toLowerCase().contains("charge"))
+            name="Charger";
+        else
+            name = "null";
+
+        Service_Cen s = new Service_Cen();
+        for(Service_Cen i: si.getAll()) {
+            if(i.getPart_name()==name)
+                s=i;
+        }
+
+        s.setAvailable_quantity(s.getAvailable_quantity()-1);
+        si.saveObj(s);
+        ci.removeObj(obj);
+
+    }
+
 
 }

@@ -24,4 +24,9 @@ public class CustOrderFunctions implements CustOrderInterface {
         return repo.findAll();
     }
 
+    @Override
+    public void removeObj(Cust_order obj) {
+        repo.delete(obj);
+    }
+
 }

@@ -48,4 +48,9 @@ public class ServiceFunctions implements ServiceInterface{
 
         return ans;
     }
+
+    @Override
+    public void removeObj(Service_Cen obj) {
+        repo.delete(obj);
+    }
 }
