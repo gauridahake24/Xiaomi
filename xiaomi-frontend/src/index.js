@@ -16,6 +16,7 @@ import Warehouse from './Components/warehouse';
 import Startpage from './Components/start_page';
 import DispatchOrder from './Components/order_dispatched';
 import All_orders from './Components/all_cust_orders';
+import Submit1 from './Components/submit_page_cust';
 
 ReactDOM.render(
     <React.StrictMode>
@@ -35,6 +36,7 @@ ReactDOM.render(
                 <Route path='/warehouse' element={<Warehouse />} />
                 <Route path='/order_dispatched' element={<DispatchOrder />} />
                 <Route path='/customer_orders' element={<All_orders />} />
+                <Route path='/submit-page-cust' element={<Submit1 />} />
             </Routes>
         </Router>
     </React.StrictMode>,

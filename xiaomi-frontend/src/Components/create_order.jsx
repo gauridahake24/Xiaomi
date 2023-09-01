@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , useSearchParams, useLocation} from 'react-router-dom';
 
 const RepairOrder = () => {
     const navigate = useNavigate();
@@ -8,25 +8,23 @@ const RepairOrder = () => {
     const [Required_quantity, setRequiredQuantity] = useState('');
     const [warehouse_location, setWarehouseLocation] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const location = useLocation();
+    const searchParams = new URLSearchParams(location.search);
+    const partId = searchParams.get("part_id");
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (!Required_quantity || !part_name || !warehouse_location ) {
+        if (!Required_quantity  || !warehouse_location ) {
             console.error("Please fill in all required fields.");
             setErrorMessage('All fields are necessary! Please enter required data');
             return ;
         }
         
-        const newOrder = { Available_quantity, part_name, Required_quantity, warehouse_location }
-        const formData = new FormData();
-        formData.append("Available_quantity", Required_quantity)
-        formData.append("part_name", "screen")
-        console.log(newOrder)
-        fetch("http://localhost:8080/service/add", {
+        fetch("http://localhost:8080/warehouse/add", {
             method: "POST",
-            // headers:{"Content-Type": "application/json"},
-            body: formData
-
+            headers:{"Content-Type": "application/json"},
+            body: JSON.stringify({part_id:partId, required_quantity: Required_quantity, source_warehouse: warehouse_location})
+            
         }).then(() => {
             navigate(`/submit`);
             console.log("new order added")
@@ -36,8 +34,10 @@ const RepairOrder = () => {
     useEffect(() => {
         const fetchAvailableQuantity = async () => {
             try {
-                const response = await fetch('localhost:8080/service/add');
+                const response = await fetch('http://localhost:8080/service/printId', {method: "POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({part_id:partId})});
                 const data = await response.json();
+                console.log(data)
+                console.log(response)
                 setAvailableQuantity(data.available_quantity);
             } catch (error) {
                 console.error('Error fetching available quantity:', error);
@@ -52,9 +52,8 @@ const RepairOrder = () => {
             <h1>Create Order</h1>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
             <form className="repair-order-form" onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="part_name">Part Name:</label>
-                    <input type="text" id="part_name" value={part_name} onChange={(e) => setPartName(e.target.value)} />
+            <div className="form-group">
+                    <label>Part id : {partId}</label>
                 </div>
                 <div className="form-group">
                     <label>Available Quantity: {Available_quantity}</label>

@@ -2,11 +2,11 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
-const Submit = () => {
+const Submit1 = () => {
     const Navigate = useNavigate();
 
     const handleStartClick = () => {
-        Navigate("/SC_requirements");
+        Navigate("/");
     };
 
     return (
@@ -17,4 +17,4 @@ const Submit = () => {
     );
 };
 
-export default Submit;
+export default Submit1;

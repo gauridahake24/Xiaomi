@@ -645,6 +645,36 @@ button {
   justify-content: center;
   margin-top: 20px; /* Adjust the margin as needed */
 }
+/* profile page */
+/* Profile.css */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.profile-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+}
+
+.profile-card h1 {
+  margin-top: 0;
+  color: #333;
+}
+
+.profile-details p {
+  margin: 10px 0;
+}
+
+.profile-details strong {
+  font-weight: bold;
+}
 
 
 

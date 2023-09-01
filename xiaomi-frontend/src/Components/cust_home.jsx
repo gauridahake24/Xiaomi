@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const CreateUpdateRepairOrder = () => {
@@ -6,6 +8,7 @@ const CreateUpdateRepairOrder = () => {
     const [device_model, setDeviceModel] = useState('');
     const [issue_description, setIssueDescription] = useState('');
     const [errorMessage, setErrorMessage] = useState(''); // Define the errorMessage state
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => { // Mark the function as async
         event.preventDefault();
@@ -14,14 +17,17 @@ const CreateUpdateRepairOrder = () => {
             setErrorMessage('All fields are necessary! Please enter required data');
             return;
         }
+        
         const student = { customer_name, device_model, issue_description };
         
+        
         try {
-            const response = await fetch("http://localhost:8080/users/add", {
+            const response = await fetch("http://localhost:8080/custorder/add", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(student)
             });
+            console.log(response)
             
             if (response.ok) {
                 console.log('Repair Order Submitted Successfully');
@@ -29,6 +35,7 @@ const CreateUpdateRepairOrder = () => {
                 setCustomerName('');
                 setDeviceModel('');
                 setIssueDescription('');
+                navigate("/submit-page-cust")
             } else {
                 console.error('Failed to submit Repair Order');
                 setErrorMessage('Failed to submit Repair Order. Please try again later.');

@@ -5,25 +5,38 @@ const SC_req = () => {
   const [partsData, setPartsData] = useState([]); // Initialize state with an empty array
   const navigate = useNavigate();
 
-  const handleStartClick = () => {
-    navigate('/create-order');
+  const handleStartClick = (part_id) => {
+    navigate(`/create-order?part_id=${part_id}`);
   };
   
   const handleStartClick1 = () => {
     navigate('/customer_orders');
   };
+const getData = async()=> {
+  try{
 
+    const response = await fetch('http://localhost:8080/service/print')
+    const data = await response.json()
+    console.log(data)
+    setPartsData(data)
+  }
+  catch(error){
+    console.log(error)
+  }
+}
   useEffect(() => {
     // Fetch data from your API endpoint when the component mounts
-    fetch('YOUR_API_ENDPOINT_URL_HERE')
-      .then((response) => response.json())
-      .then((data) => {
-        // Update the state with the received data
-        setPartsData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
+    // fetch('localhost:8080/service/print')
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     // Update the state with the received data
+    //     setPartsData(data);
+    //     console.log(data)
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error fetching data:', error);
+    //   });
+    getData()
   }, []); // Empty dependency array to run the effect once on component mount
 
   return (
@@ -43,14 +56,14 @@ const SC_req = () => {
           </thead>
           <tbody>
             {partsData.map((part) => (
-              <tr key={part.part_id}>
-                <td>{part.part_id}</td>
-                <td>{part.part_name}</td>
-                <td>{part.Available_quantity}</td>
-                <td>{part.Required_quantity}</td>
-                <td>{part.priority}</td>
+              <tr key={part?.part_id}>
+                <td>{part?.part_id}</td>
+                <td>{part?.part_name}</td>
+                <td>{part?.available_quantity}</td>
+                <td>{part?.required_quantity}</td>
+                <td>{part?.priority}</td>
                 <td>
-                  <button className="order-button" onClick={handleStartClick}>
+                  <button className="order-button" onClick={()=>{handleStartClick(part.part_id)}}>
                     Order
                   </button>
                 </td>
