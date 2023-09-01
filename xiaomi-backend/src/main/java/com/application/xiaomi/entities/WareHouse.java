@@ -21,6 +21,10 @@ public class WareHouse {
         this.source_warehouse = source_warehouse;
     }
 
+    public WareHouse() {
+        super();
+    }
+
     public int getDispatch_id() {
         return dispatch_id;
     }

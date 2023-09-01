@@ -24,6 +24,10 @@ public class CustomerQueries {
         this.response_text = response_text;
     }
 
+    public CustomerQueries() {
+        super();
+    }
+
     public int getQuery_id() {
         return query_id;
     }

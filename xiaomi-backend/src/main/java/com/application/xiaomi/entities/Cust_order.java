@@ -26,6 +26,10 @@ public class Cust_order {
         this.status = status;
     }
 
+    public Cust_order() {
+        super();
+    }
+
     public int getOrder_id() {
         return order_id;
     }

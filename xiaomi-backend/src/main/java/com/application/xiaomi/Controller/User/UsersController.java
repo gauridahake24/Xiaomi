@@ -16,7 +16,7 @@ public class UsersController {
 
     @PostMapping("")
     public String home() {
-        return "Hello World!";
+        return "Users Home";
     }
 
     @PostMapping("/add")
