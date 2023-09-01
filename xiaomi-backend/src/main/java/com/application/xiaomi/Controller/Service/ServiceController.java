@@ -38,7 +38,7 @@ public class ServiceController {
     }
 
     @GetMapping("/print")
-    public List<Service_Cen> getall() {
+    public List<Service_Cen> getAll() {
         return si.getAll();
     }
 

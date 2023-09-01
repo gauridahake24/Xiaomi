@@ -3,10 +3,7 @@ package com.application.xiaomi.Controller.CustOrder;
 
 import com.application.xiaomi.entities.Cust_order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,7 +26,7 @@ public class CustOrderController {
         return ans;
     }
 
-    @PostMapping("/print")
+    @GetMapping("/print")
     public List<Cust_order> print() {
         return ci.getAll();
     }

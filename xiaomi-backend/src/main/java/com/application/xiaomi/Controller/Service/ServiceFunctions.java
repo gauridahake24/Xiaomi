@@ -20,6 +20,6 @@ public class ServiceFunctions implements ServiceInterface{
 
     @Override
     public List<Service_Cen> getAll() {
-        return (List<Service_Cen>) repo.findAll();
+        return repo.findAll();
     }
 }

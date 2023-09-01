@@ -2,10 +2,7 @@ package com.application.xiaomi.Controller.CustomerQueries;
 
 import com.application.xiaomi.entities.CustomerQueries;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,7 +24,7 @@ public class CustomerQueriesController {
         return ans;
     }
 
-    @PostMapping("/print")
+    @GetMapping("/print")
     public List<CustomerQueries> print() {
         return wi.getAll();
     }
