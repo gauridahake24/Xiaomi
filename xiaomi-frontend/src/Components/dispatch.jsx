@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 const DispatchPlan = () => {
   const navigate = useNavigate();
   const [partsData, setPartsData] = useState([]);
+  const handleStartClick = () => {
+    navigate("/warehouse");
+  };
 
   useEffect(() => {
     // Fetch data from your API endpoint when the component mounts
@@ -22,8 +25,17 @@ const DispatchPlan = () => {
   const handleDispatchClick = async (part) => {
     const response = await fetch("http://localhost:8080/warehouse/dispatch", {method: "POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({...part})})
     // Handle the dispatch action for the specific part here
+    const data = await response.json()
+    console.log(response)
+    console.log(data[0])
+    if (data[0] === true){
+      navigate("/order_dispatched");
+    }
+    else{
+      alert("Insufficient Quantity in Warehouse")
+    }
     console.log(`Dispatching part with ID ${part.part_id}`);
-    navigate("/order_dispatched");
+    // navigate("/order_dispatched");
   };
 
   return (
@@ -76,7 +88,14 @@ const DispatchPlan = () => {
             ))} */}
           </tbody>
         </table>
+        
       </div>
+      <div className="buttonContainer">
+      <button className="partrequest" onClick={handleStartClick}>
+        Warehouse
+      </button>
+      </div>
+      
     </div>
   );
 };

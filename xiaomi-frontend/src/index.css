@@ -618,6 +618,10 @@ button {
   cursor: pointer;
   font-size: 18px;
 }
+.buttonContainer{
+  display: flex;
+  justify-content: center;
+}
 
 /* Media query for mobile responsiveness */
 @media (max-width: 768px) {
@@ -675,7 +679,11 @@ button {
 .profile-details strong {
   font-weight: bold;
 }
+.warehouse{
+  justify-content: center;
+  margin-top: 20px;
 
+}
 
 
 
