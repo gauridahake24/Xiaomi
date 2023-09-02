@@ -22,12 +22,22 @@ const Startpage = () => {
     <div className="startpage-container">
 
       
-      <HomePageCard
+      {/* <HomePageCard
         title="Service Centers & Warehouses"
         description="Manage your service centers and warehouses here."
         buttonText="Start"
         onClick={handleStartClick}
-      />
+      /> */}
+       <div className="home-page-card">
+      <h1 className="home-page-card-title">Service Centers & Warehouses</h1>
+      <p>Manage your service centers and warehouses here.</p>
+      <button className="home-page-card-button" onClick={()=> {navigate("/login") }}>
+        Login
+      </button>
+      <button style = {{marginLeft: "0.5rem"}} className="home-page-card-button" onClick={()=> {navigate("/make_profile") }}>
+        Create Profile
+      </button>
+    </div>
       
       <HomePageCard
         title="Customers"
