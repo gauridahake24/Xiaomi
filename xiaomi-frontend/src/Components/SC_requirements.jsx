@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const SC_req = () => {
-  const [partsData, setPartsData] = useState([]); // Initialize state with an empty array
+  const [partsData, setPartsData] = useState([]); 
   const navigate = useNavigate();
 
   const handleStartClick = (part_id) => {
@@ -37,7 +37,7 @@ const getData = async()=> {
     //     console.error('Error fetching data:', error);
     //   });
     getData()
-  }, []); // Empty dependency array to run the effect once on component mount
+  }, []); 
 
   return (
     <div className="sc-req-container">

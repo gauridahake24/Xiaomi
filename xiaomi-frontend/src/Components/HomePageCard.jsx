@@ -1,4 +1,3 @@
-// HomePageCard.js
 import React from 'react';
 
 const HomePageCard = ({ title, description, buttonText, onClick }) => {

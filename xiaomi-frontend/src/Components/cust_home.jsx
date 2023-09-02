@@ -7,10 +7,10 @@ const CreateUpdateRepairOrder = () => {
     const [customer_name, setCustomerName] = useState('');
     const [device_model, setDeviceModel] = useState('');
     const [issue_description, setIssueDescription] = useState('');
-    const [errorMessage, setErrorMessage] = useState(''); // Define the errorMessage state
+    const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = async (event) => { // Mark the function as async
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if (!customer_name || !device_model || !issue_description) {
             console.error("Please fill in all required fields.");
@@ -31,7 +31,7 @@ const CreateUpdateRepairOrder = () => {
             
             if (response.ok) {
                 console.log('Repair Order Submitted Successfully');
-                // You can optionally reset the form fields here
+               
                 setCustomerName('');
                 setDeviceModel('');
                 setIssueDescription('');

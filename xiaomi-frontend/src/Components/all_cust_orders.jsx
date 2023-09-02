@@ -8,7 +8,7 @@ const All_orders = () => {
   };
   
   
-  const [ordersData, setOrdersData] = useState([]); // Initialize state with an empty array
+  const [ordersData, setOrdersData] = useState([]); 
   const getData = async()=> {
     try{
   
@@ -45,7 +45,7 @@ const All_orders = () => {
       //   console.error('Error fetching data:', error);
       // });
       getData()
-  }, []); // Empty dependency array to run the effect once on component mount
+  }, []); 
 
   return (
     <div className="all-orders-container">

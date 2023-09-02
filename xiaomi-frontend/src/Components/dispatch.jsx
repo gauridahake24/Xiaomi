@@ -9,22 +9,22 @@ const DispatchPlan = () => {
   };
 
   useEffect(() => {
-    // Fetch data from your API endpoint when the component mounts
+    
     fetch("http://localhost:8080/warehouse/print")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        // Update the state with the received data
+        
         setPartsData(data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []); // Empty dependency array to run the effect once on component mount
+  }, []); 
 
   const handleDispatchClick = async (part) => {
     const response = await fetch("http://localhost:8080/warehouse/dispatch", {method: "POST", headers:{"Content-Type": "application/json"}, body: JSON.stringify({...part})})
-    // Handle the dispatch action for the specific part here
+   
     const data = await response.json()
     console.log(response)
     console.log(data[0])

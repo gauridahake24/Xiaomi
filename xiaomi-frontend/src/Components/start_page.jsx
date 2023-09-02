@@ -16,8 +16,8 @@ const Startpage = () => {
   };
 
   return (
-    <div><h1 className="startpage-title">
-    Welcome to Xiaomi Warehouse Management Portal
+    <div><h1 className="startpage-title" >
+    Welcome to GP Distributors
   </h1>
     <div className="startpage-container">
 

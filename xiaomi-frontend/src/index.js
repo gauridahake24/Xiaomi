@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.css';
 import RepairOrders from './Components/create_order'; 
-import CreateUpdateRepairOrder from './Components/cust_home'; 
-import Planning from './Components/planning'; 
+import CreateUpdateRepairOrder from './Components/cust_home';
 import DispatchPlan from './Components/dispatch'; 
 import Profile from './Components/profile_page'; 
 import SC_req from './Components/SC_requirements';
@@ -25,7 +24,6 @@ ReactDOM.render(
                 <Route path="/create-order" element={<RepairOrders />} />
                 <Route path="/" element={<Startpage />} />
                 <Route path="/cust_home" element={<CreateUpdateRepairOrder />} />
-                <Route path="/planning" element={<Planning />} />
                 <Route path="/dispatch" element={<DispatchPlan />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/sc_requirements" element={<SC_req />} />

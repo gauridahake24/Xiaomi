@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Warehouse = () => {
-  const [partsData, setPartsData] = useState([]); // Initialize state with an empty array
+  const [partsData, setPartsData] = useState([]); 
   const navigate = useNavigate();
 
   const handleStartClick = () => {
@@ -10,18 +10,17 @@ const Warehouse = () => {
   };
 
   useEffect(() => {
-    // Fetch data from your API endpoint when the component mounts
+    
     fetch("http://localhost:8080/warehouse/print")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        // Update the state with the received data
         setPartsData(data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []); // Empty dependency array to run the effect once on component mount
+  }, []); 
 
   return (
     <div className="warehouse-container">

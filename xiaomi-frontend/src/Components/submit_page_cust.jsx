@@ -11,7 +11,7 @@ const Submit1 = () => {
 
     return (
         <div className="submit-container">
-            <h1>Your order has been successfully submitted</h1>
+            <h1>Your Issue has been successfully submitted</h1>
             <button className="btn btn-primary" onClick={handleStartClick}>Dashboard</button>
         </div>
     );

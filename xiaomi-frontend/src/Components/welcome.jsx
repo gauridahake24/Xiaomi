@@ -10,7 +10,7 @@ const Welcome = () => {
 
     return (
         <div className="welcome-card">
-            <h1>Welcome to Xiaomi Warehouse Management System</h1>
+            <h1>Welcome to GP Distributors</h1>
             <h2>Your user ID is: {userId}</h2>
             <p>Please log in to continue.</p>
 
