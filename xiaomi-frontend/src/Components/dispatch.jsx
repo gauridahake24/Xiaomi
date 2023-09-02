@@ -46,20 +46,20 @@ const DispatchPlan = () => {
           <thead>
             <tr>
               <th>Part ID</th>
-              <th>Required Quantity</th>
+              <th>Available Quantity</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {partsData?.map((part, index) => {
-              if (part.dispatch_id > 5) {
+              if (part.dispatch_id > 0) {
                 return (
                   <tr
                     key={part.part_id}
                     className={index % 2 === 0 ? "even-row" : "odd-row"}
                   >
                     <td>{part.part_id}</td>
-                    <td>{part.required_quantity}</td>
+                    <td>{part.warehouse_quantity}</td>
                     <td>
                       <button
                         className="order-button"

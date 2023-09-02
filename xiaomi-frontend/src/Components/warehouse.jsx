@@ -36,7 +36,7 @@ const Warehouse = () => {
           </thead>
           <tbody>
             {partsData?.map((part, index) => {
-              if (part.dispatch_id > 0 && part.dispatch_id < 6) {
+              if (part.dispatch_id > -6 && part.dispatch_id < 0) {
                 return (
                   <tr
                     key={part.part_id}
