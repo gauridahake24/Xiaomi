@@ -29,6 +29,9 @@ public class WarehouseController {
     public WareHouse add(@RequestBody WareHouse obj) {
 
         WareHouse ans = wi.saveObj(obj);
+        Service_Cen s = si.getById(obj.getPart_id());
+        s.setRequired_quantity(s.getRequired_quantity() + obj.getRequired_quantity());
+        si.saveObj(s);
         return ans;
     }
 
@@ -68,6 +71,7 @@ public class WarehouseController {
             Service_Cen s = si.getById(part_id);
             s.setAvailable_quantity(s.getAvailable_quantity() + s.getRequired_quantity());
             s.setRequired_quantity(0);
+            si.saveObj(s);
             wi.removeObj(obj);
             list.add(s);
         }

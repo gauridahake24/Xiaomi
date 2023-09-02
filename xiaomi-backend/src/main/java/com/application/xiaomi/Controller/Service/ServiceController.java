@@ -15,6 +15,7 @@ import java.util.List;
 @RequestMapping("/service")
 public class ServiceController {
 
+    private static Service_Cen ans;
     @Autowired
     private ServiceInterface si;
     @Autowired
@@ -59,30 +60,39 @@ public class ServiceController {
         return ans;
     }
 
+
+    public static void findByName(String name, List<Service_Cen> list) {
+
+        for(int i=0;i<list.size();i++) {
+            if(list.get(i).getPart_name().equals(name)) {
+                ans = list.get(i);
+                System.out.println(list.get(i));
+                break;
+            }
+        }
+    }
+
     @PostMapping("/complete")
-    public void complete(@RequestBody Cust_order obj) {
+    public Service_Cen complete(@RequestBody Cust_order obj) {
         String name;
+        System.out.println("-----------\n" + "In Function\n\n\n");
         if(obj.getIssue_description().toLowerCase().contains("battery"))
-            name="battery";
+            name="Battery";
         else if(obj.getIssue_description().toLowerCase().contains("screen"))
-            name="screen";
+            name="Screen";
         else if(obj.getIssue_description().toLowerCase().contains("camera") || obj.getIssue_description().toLowerCase().contains("lens"))
-            name = "lens";
+            name = "Lens";
         else if(obj.getIssue_description().toLowerCase().contains("charge"))
-            name="charger";
+            name="Charger";
         else
             name = "null";
 
-        Service_Cen s = new Service_Cen();
-        for(Service_Cen i: si.getAll()) {
-            if(i.getPart_name()==name) {
-                s = i;
-            }
-        }
 
-        s.setAvailable_quantity(s.getAvailable_quantity()-1);
-        si.saveObj(s);
+//        s.setAvailable_quantity(s.getAvailable_quantity()-1);
+        findByName(name, si.getAll());
+        si.saveObj(ans);
         ci.removeObj(obj);
+        return ans;
 
     }
 
