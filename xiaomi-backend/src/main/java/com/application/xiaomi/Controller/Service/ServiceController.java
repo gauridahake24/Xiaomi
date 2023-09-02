@@ -67,6 +67,7 @@ public class ServiceController {
             if(list.get(i).getPart_name().equals(name)) {
                 ans = list.get(i);
                 System.out.println(list.get(i));
+                ans.setAvailable_quantity(ans.getAvailable_quantity()-1);
                 break;
             }
         }
@@ -77,13 +78,13 @@ public class ServiceController {
         String name;
         System.out.println("-----------\n" + "In Function\n\n\n");
         if(obj.getIssue_description().toLowerCase().contains("battery"))
-            name="Battery";
+            name="battery";
         else if(obj.getIssue_description().toLowerCase().contains("screen"))
-            name="Screen";
+            name="screen";
         else if(obj.getIssue_description().toLowerCase().contains("camera") || obj.getIssue_description().toLowerCase().contains("lens"))
-            name = "Lens";
+            name = "lens";
         else if(obj.getIssue_description().toLowerCase().contains("charge"))
-            name="Charger";
+            name="charger";
         else
             name = "null";
 
