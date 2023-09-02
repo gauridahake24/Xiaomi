@@ -47,7 +47,7 @@ const DispatchPlan = () => {
                     className={index % 2 === 0 ? "even-row" : "odd-row"}
                   >
                     <td>{part.part_id}</td>
-                    <td>{part.warehouse_quantity}</td>
+                    <td>{part.required_quantity}</td>
                     <td>
                       <button
                         className="order-button"
