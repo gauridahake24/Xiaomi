@@ -45,11 +45,37 @@
 </details>
 Once you complete the above requirements, follow the given steps to start the set up. Alternatively, you can see the video in <a href="/Assets">Assets</a> folder.
 <ul>
-  <li> Open the the project in an IDE. Open the <a href="xiaomi-backend/pom.xml">pom.xml</a> file. <b>NOTE</b>: If you are using an IDE other than IntelliJ then please check the extensions needed for Spring Boot Application</li>
-</ul>
+  <li> Open the the project in an IDE. Open the <a href="xiaomi-backend/pom.xml">pom.xml</a> file. <b>NOTE</b>: If you are using an IDE other than IntelliJ then please check the extensions needed for Spring Boot Application
+  </li>
+  <li>
+  Open MySQL and create a new database "Xiaomi" using the following command
+  <p>
+    
+    CREATE DATABASE xiaomi
+  </p>
+</li>
 
-```
+<li>
+  From the <b>xiaomi-backend</b> folder, open the <a href="xiaomi-backend/src/main/resources/application.properties">application.properties</a> file and set the <b>spring.datasource.password</b> as the password of your MySQL server.
+</li>
+<li>
+  From the <b>xiaomi-backend</b> folder, open the <a href="xiaomi-backend/src/main/java/com/application/xiaomi/XiaomiApplication.java">XiaomiApplication.java</a> file and run it. <b>Note</b>: Make sure that the dependencies given in the first step are satisfied.
+</li>
+<li>
+  Once you complete the above step, your database will have all the required tables. Now open the <a href="Assets/trigger_setup.sql">trigger_setup.sql</a> file in MySQL Workbench and run it. Once done, the required tables will be populated with data and sql triggers will be created.
+</li>
+<li>
+  Open the <b>xiaomi</b> folder (i.e. the project folder) in your terminal and start the node project using the following command.
+  <p>
+
     cd xiaomi-frontend
     npm install
     npm start
-```
+  </p>
+</li>
+<li>
+  After running the above command, a new tab will open on your browser (mostly on localhost:3000). From there onwards, you can refer the <a href="Assets/Xiaomi-Final-Video.mkv">video</a> from 2:11 to see how the project works.
+</li>
+</ul>
+
+
