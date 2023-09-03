@@ -303,20 +303,20 @@ button[type="submit"]:hover {
   justify-content: center;
   height: 100vh;
   text-align: center;
-  background-color: #f5f5f5; /* Set your desired background color */
+  background-color: #f5f5f5; 
 }
 
 h1 {
   font-size: 24px;
   margin-bottom: 20px;
-  color: #333; /* Set your desired text color */
+  color: #333; 
 }
 
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #007bff; /* Set your desired button background color */
-  color: #fff; /* Set your desired button text color */
+  background-color: #007bff; 
+  color: #fff; /* 
   border: none;
   border-radius: 5px;
   font-size: 18px;
@@ -563,11 +563,11 @@ th, td {
 }
 
 .odd-row {
-  background-color: #f2f2f2; /* Set background color for odd rows */
+  background-color: #f2f2f2; 
 }
 
 .even-row {
-  background-color: #fff; /* Set background color for even rows */
+  background-color: #fff; 
 }
 
 /* Media query for mobile responsiveness */
@@ -584,10 +584,10 @@ th, td {
 /* dispatch plan */
 .dispatch-order-container {
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Full viewport height */
-  background-color: #f5f5f5; /* Set your desired background color */
+  justify-content: center; 
+  align-items: center; 
+  height: 100vh; 
+  background-color: #f5f5f5; 
 }
 
 .dispatch-order-card {
@@ -626,7 +626,7 @@ button {
 /* Media query for mobile responsiveness */
 @media (max-width: 768px) {
   .dispatch-order-card {
-    max-width: 90%; /* Adjust the card's width for smaller screens */
+    max-width: 90%; 
   }
 
   h1 {
@@ -647,10 +647,10 @@ button {
 .center-button-1 {
   display: flex;
   justify-content: center;
-  margin-top: 20px; /* Adjust the margin as needed */
+  margin-top: 20px;
 }
 /* profile page */
-/* Profile.css */
+
 .profile-container {
   display: flex;
   justify-content: center;
