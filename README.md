@@ -44,7 +44,7 @@
 </details>
 Once you complete the above requirements, follow the given steps to start the set up. Alternatively, you can see the video in <a href="/Assets">Assets</a> folder(If you are unable to view the video please download it on your system).
 <ul>
-  <li> Open the the project in an IDE. Open the <a href="xiaomi-backend/pom.xml">pom.xml</a> file. All the Spring Boot dependenciessare present in this file. Once these dependencies are downloaded, you can close this file. <b>NOTE</b>: If you are using an IDE other than IntelliJ then please check the extensions needed for Spring Boot Application
+  <li> Open the the project in an IDE. Open the <a href="xiaomi-backend/pom.xml">pom.xml</a> file. All the Spring Boot dependencies are present in this file. Once these dependencies are downloaded, you can close this file. <b>NOTE</b>: If you are using an IDE other than IntelliJ then please check the extensions needed for Spring Boot Application
   </li>
   <li>
   Open MySQL and create a new database "Xiaomi" using the following command
